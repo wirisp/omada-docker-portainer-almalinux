@@ -108,3 +108,15 @@ sudo docker restart miportainer
 - Ingresamos a portainer con IP:9000
 - Cambia la Ip a publica
 cambiar ip en Enviroments>local>Public IP
+- Si algo va mal
+```
+dnf install firewalld -y
+systemctl enable --now firewalld
+firewall-cmd --permanent --add-port=8088/tcp
+firewall-cmd --permanent --add-port=8043/tcp
+
+
+#firewall-cmd --permanent --zone=trusted --change-interface=docker0
+#firewall-cmd --permanent --zone=trusted --add-port=4243/tcp
+#firewall-cmd --reload
+```
