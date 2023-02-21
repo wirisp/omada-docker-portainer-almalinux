@@ -18,6 +18,10 @@ sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
 ```
 
 ```
+sudo timedatectl set-timezone America/Mexico_City
+```
+
+```
 dnf install -y yum-utils device-mapper-persistent-data
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 ```
@@ -102,4 +106,5 @@ docker ps
 sudo docker restart miportainer
 ```
 - Ingresamos a portainer con IP:9000
-
+- Cambia la Ip a publica
+cambiar ip en Enviroments>local>Public IP
