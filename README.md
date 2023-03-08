@@ -57,7 +57,9 @@ version: '3.3'
 services:
   omada-controller:
     container_name: omada-controller
+    image: 'mbentley/omada-controller:5.9'
     restart: unless-stopped
+    network_mode: bridge
     ports:
       - '8088:8088'
       - '8043:8043'
@@ -77,19 +79,19 @@ services:
       - SSL_CERT_NAME=tls.crt
       - SSL_KEY_NAME=tls.key
       - TZ=America/Mexico_City
+      - TLS_1_11_ENABLED=true
     volumes:
       - './omada-data:/opt/tplink/EAPController/data'
       - './omada-work:/opt/tplink/EAPController/work'
       - './omada-logs:/opt/tplink/EAPController/logs'
       - './omada-cert:/cert'
-    image: 'mbentley/omada-controller:5.0'
 ```
 
 ```
 docker-compose up -d
 ```
 
-- Ingresamos a la web con la IP:8043
+- Ingresamos a la web con la https://IP:8043
 
 ## Instalacion de portainer
 Lo utilizamos para administracion de los contenedores.
