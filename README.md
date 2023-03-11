@@ -70,10 +70,18 @@ services:
       - '29813:29813'
       - '29814:29814'
     environment:
+      - PUID=508
+      - PGID=508
       - MANAGE_HTTP_PORT=8088
       - MANAGE_HTTPS_PORT=8043
       - PORTAL_HTTP_PORT=8088
       - PORTAL_HTTPS_PORT=8843
+      - PORT_APP_DISCOVERY=27001
+      - PORT_ADOPT_V1=29812
+      - PORT_UPGRADE_V1=29813
+      - PORT_MANAGER_V1=29811
+      - PORT_MANAGER_V2=29814
+      - PORT_DISCOVERY=29810
       - SHOW_SERVER_LOGS=true
       - SHOW_MONGODB_LOGS=false
       - SSL_CERT_NAME=tls.crt
@@ -81,10 +89,15 @@ services:
       - TZ=America/Mexico_City
       - TLS_1_11_ENABLED=true
     volumes:
-      - './omada-data:/opt/tplink/EAPController/data'
-      - './omada-work:/opt/tplink/EAPController/work'
-      - './omada-logs:/opt/tplink/EAPController/logs'
-      - './omada-cert:/cert'
+      - omada-data:/opt/tplink/EAPController/data
+      - omada-logs:/opt/tplink/EAPController/logs
+      - omada-work:/opt/tplink/EAPController/work'
+      - omada-cert:/cert'
+volumes:
+  omada-data:
+  omada-logs:
+  omada-work:
+  omada-cert:
 ```
 
 ```
